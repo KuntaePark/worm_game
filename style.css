@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#wrap {
+  position: relative;
+  width: 1200px;
+  height: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: black;
+}
+
+.snakeBody {
+  position: absolute;
+  background-color: yellowgreen;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.snakeHead {
+  position: absolute;
+  background-color: rgb(1, 216, 1);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.obst {
+  position: absolute;
+  background-color: blue;
+  border-radius: 50%;
+  background-image: url("images/asteroid.png");
+  background-position: 50% 50%;
+  background-size: contain;
+}
+
+.food {
+  position: absolute;
+  border-radius: 50%;
+  background-image: url("images/star.png");
+  background-position: 50% 50%;
+  background-size: contain;
+}
