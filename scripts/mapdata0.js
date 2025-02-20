@@ -3,6 +3,8 @@ function Coord(x, y) {
   this.y = y;
 }
 
+//Coord는 coordinate, 좌표를 의미
+//Coord(x,y)는 css에서 left: x; top: y;의 위치
 //맵 크기는 가로 1200 세로 800
 //좌상단이 좌표 0,0
 const foodSize = 30;
