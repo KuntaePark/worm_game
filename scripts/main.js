@@ -23,16 +23,19 @@ let intId = setInterval(function () {
 
   if (wallCollide()) {
     //벽 충돌 시
+
     console.log("wall");
     clearInterval(intId);
   }
   if (obstCollide()) {
     //장애물 충돌 시
+
     console.log("obst");
     clearInterval(intId);
   }
   if (foodCollide()) {
     //먹이 충돌 시
+
     if (foods.length === 0) {
       console.log("eaten all");
     }

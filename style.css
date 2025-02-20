@@ -11,6 +11,7 @@
   margin: 0 auto;
   overflow: hidden;
   background-color: black;
+  border: 10px solid gray;
 }
 
 .snakeBody {

@@ -7,9 +7,9 @@ function wallCollide() {
   let headCenterY = snake[0].y + bodySize / 2;
   if (
     headCenterX <= 0 ||
-    headCenterX >= 1200 ||
+    headCenterX >= WIDTH ||
     headCenterY <= 0 ||
-    headCenterY >= 800
+    headCenterY >= HEIGHT
   ) {
     return true;
   }
