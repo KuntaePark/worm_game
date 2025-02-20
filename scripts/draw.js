@@ -34,7 +34,7 @@ function drawSnake() {
     const bodyPart = document.createElement("div");
     if (idx === 0) {
       bodyPart.className = "snakeHead";
-      bodyPart.style.zIndex = 99;
+      bodyPart.style.zIndex = 90;
 
       const eye1 = document.createElement("div");
       const eyeball1 = document.createElement("div");

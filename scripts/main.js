@@ -5,46 +5,48 @@ lengthIncrease = 0;
 
 drawMap();
 
-let intId = setInterval(function () {
-  snake.unshift(
-    new Coord(
-      snake[0].x + vector.x * spaceBetween,
-      snake[0].y + vector.y * spaceBetween
-    )
-  );
-  //if eat, then dont remove
-  if (lengthIncrease > 0) {
-    lengthIncrease--;
-  } else {
-    snake.pop();
-  }
-
-  drawSnake();
-
-  if (wallCollide()) {
-    //벽 충돌 시
-
-    console.log("wall");
-    clearInterval(intId);
-  }
-  if (obstCollide()) {
-    //장애물 충돌 시
-
-    console.log("obst");
-    clearInterval(intId);
-  }
-  if (foodCollide()) {
-    //먹이 충돌 시
-
-    if (foods.length === 0) {
-      console.log("eaten all");
+function startGame() {
+  gameIntervalId = setInterval(function () {
+    snake.unshift(
+      new Coord(
+        snake[0].x + vector.x * spaceBetween,
+        snake[0].y + vector.y * spaceBetween
+      )
+    );
+    //if eat, then dont remove
+    if (lengthIncrease > 0) {
+      lengthIncrease--;
+    } else {
+      snake.pop();
     }
-    console.log("food");
-    map.innerHTML = "";
-    drawMap();
-    lengthIncrease += 3;
-  }
-}, time);
+
+    drawSnake();
+
+    if (wallCollide()) {
+      //벽 충돌 시
+
+      console.log("wall");
+      clearInterval(gameIntervalId);
+    }
+    if (obstCollide()) {
+      //장애물 충돌 시
+
+      console.log("obst");
+      clearInterval(gameIntervalId);
+    }
+    if (foodCollide()) {
+      //먹이 충돌 시
+
+      if (foods.length === 0) {
+        console.log("eaten all");
+      }
+      console.log("food");
+      map.innerHTML = "";
+      drawMap();
+      lengthIncrease += 3;
+    }
+  }, time);
+}
 
 wrap.addEventListener("mousemove", (e) => {
   var rect = wrap.getBoundingClientRect();

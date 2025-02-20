@@ -36,3 +36,5 @@ let foods = [
   new Coord(800, 700),
   new Coord(900, 600),
 ];
+
+let gameIntervalId = null;

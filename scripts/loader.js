@@ -6,6 +6,7 @@ function loadScript(src) {
   document.body.appendChild(script);
 }
 
+loadScript("scripts/timerOverlay.js");
 loadScript("scripts/mapdata0.js");
 loadScript("scripts/draw.js");
 loadScript("scripts/collide.js");
