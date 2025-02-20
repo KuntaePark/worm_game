@@ -35,9 +35,27 @@ function drawSnake() {
     if (idx === 0) {
       bodyPart.className = "snakeHead";
       bodyPart.style.zIndex = 99;
+
+      const eye1 = document.createElement("div");
+      const eyeball1 = document.createElement("div");
+      const eye2 = document.createElement("div");
+      const eyeball2 = document.createElement("div");
+      eye1.className = "eyes";
+      eye2.className = "eyes";
+      eyeball1.className = "eyeball";
+      eyeball2.className = "eyeball";
+
+      eyeball2.style.bottom = "0px";
+      eye1.style.top = "0px";
+      eye2.style.bottom = "0px";
+
+      eye1.append(eyeball1);
+      eye2.append(eyeball2);
+      bodyPart.append(eye1, eye2);
+      const angle = vector.y > 0 ? Math.acos(vector.x) : -Math.acos(vector.x);
+      bodyPart.style.transform = `rotate(${angle}rad)`;
     } else {
       bodyPart.className = "snakeBody";
-      bodyPart.style.zIndex = idx;
     }
     var rect = wrap.getBoundingClientRect();
     let coordX = parseInt(coord.x);
