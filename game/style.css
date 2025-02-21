@@ -10,7 +10,7 @@
   height: 800px;
   margin: 0 auto;
   overflow: hidden;
-  background-color: black;
+  background: radial-gradient(rgb(29, 29, 29), black, black);
   border: 10px solid gray;
 }
 
