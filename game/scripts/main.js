@@ -1,9 +1,10 @@
-let spaceBetween = 10;
-let time = 30;
+let gameIntervalId = null;
+
 let vector = new Coord(1, 0);
 lengthIncrease = 0;
 
-drawMap();
+drawObst();
+drawFood();
 
 function startGame() {
   gameIntervalId = setInterval(function () {
@@ -22,16 +23,11 @@ function startGame() {
 
     drawSnake();
 
-    if (wallCollide()) {
-      //벽 충돌 시
-
-      console.log("wall");
-      clearInterval(gameIntervalId);
-    }
-    if (obstCollide()) {
+    if (obstCollide() || wallCollide()) {
       //장애물 충돌 시
-
-      console.log("obst");
+      const head = document.querySelector(".snakeHead");
+      head.style.backgroundColor = "red";
+      console.log("ded");
       clearInterval(gameIntervalId);
     }
     if (foodCollide()) {
@@ -39,10 +35,11 @@ function startGame() {
 
       if (foods.length === 0) {
         console.log("eaten all");
+        clearInterval(gameIntervalId);
       }
       console.log("food");
-      map.innerHTML = "";
-      drawMap();
+      foodElem.innerHTML = "";
+      drawFood();
       lengthIncrease += 3;
     }
   }, time);

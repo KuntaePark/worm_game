@@ -1,11 +1,12 @@
 const wrap = document.getElementById("wrap");
 const map = document.getElementById("map");
+const foodElem = document.getElementById("foods");
 const snakeElem = document.getElementById("snake");
 let snake = [];
 for (let i = 0; i < 3; i++) snake.push(startPoint);
 const bodySize = 50;
 
-function drawMap() {
+function drawObst() {
   obstacles.forEach((coord) => {
     const obst = document.createElement("div");
     obst.className = "obst";
@@ -15,6 +16,9 @@ function drawMap() {
     obst.style.width = obstSize + "px";
     map.append(obst);
   });
+}
+
+function drawFood() {
   foods.forEach((coord, idx) => {
     const food = document.createElement("div");
     food.className = "food";
@@ -24,17 +28,18 @@ function drawMap() {
     food.style.height = foodSize + "px";
     food.style.width = foodSize + "px";
 
-    map.append(food);
+    foodElem.append(food);
   });
 }
 
 function drawSnake() {
   snakeElem.innerHTML = "";
-  snake.forEach((coord, idx) => {
+  for (let idx = 0; idx < snake.length; idx++) {
+    const coord = snake[idx];
     const bodyPart = document.createElement("div");
     if (idx === 0) {
       bodyPart.className = "snakeHead";
-      bodyPart.style.zIndex = 90;
+      bodyPart.style.zIndex = 99;
 
       const eye1 = document.createElement("div");
       const eyeball1 = document.createElement("div");
@@ -56,6 +61,15 @@ function drawSnake() {
       bodyPart.style.transform = `rotate(${angle}rad)`;
     } else {
       bodyPart.className = "snakeBody";
+      bodyPart.style.zIndex = 99 - idx;
+      const coordBef = snake[idx - 1];
+      let vx = coordBef.x - coord.x;
+      let vy = coordBef.y - coord.y;
+      const norm = Math.sqrt(vx * vx + vy * vy);
+      vx = vx / norm;
+      vy = vy / norm;
+      const angle = vy > 0 ? Math.acos(vx) : -Math.acos(vx);
+      bodyPart.style.transform = `rotate(${angle}rad)`;
     }
     var rect = wrap.getBoundingClientRect();
     let coordX = parseInt(coord.x);
@@ -64,5 +78,5 @@ function drawSnake() {
     bodyPart.style.top = coordY + "px";
 
     snakeElem.append(bodyPart);
-  });
+  }
 }

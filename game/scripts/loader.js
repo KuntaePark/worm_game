@@ -7,11 +7,11 @@ function loadScript(src) {
 }
 
 function loadWithMap(mapNum) {
-  loadScript("scripts/timerOverlay.js");
   loadScript(`scripts/mapdata${mapNum}.js`);
+  loadScript("scripts/timerOverlay.js");
   loadScript("scripts/draw.js");
   loadScript("scripts/collide.js");
   loadScript("scripts/main.js");
 }
 
-loadWithMap(0);
+loadWithMap(10);

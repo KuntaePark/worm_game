@@ -15,6 +15,10 @@ const obstSize = 500;
 //시작 지점 위치
 const startPoint = new Coord(100, 400);
 
+//지렁이 속도 관련
+let spaceBetween = 15;
+let time = 30;
+
 //각 장애물 위치
 let obstacles = [
   new Coord(1000, 600),
@@ -36,5 +40,3 @@ let foods = [
   new Coord(800, 700),
   new Coord(900, 600),
 ];
-
-let gameIntervalId = null;
