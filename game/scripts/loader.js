@@ -7,11 +7,14 @@ function loadScript(src) {
 }
 
 function loadWithMap(mapNum) {
-  loadScript(`scripts/mapdata${mapNum}.js`);
+  loadScript(`scripts/stages/mapdata${mapNum}.js`);
   loadScript("scripts/timerOverlay.js");
   loadScript("scripts/draw.js");
   loadScript("scripts/collide.js");
   loadScript("scripts/main.js");
 }
 
-loadWithMap(10);
+let stageNum = parseInt(window.location.href.split("?")[1]);
+console.log(stageNum)
+
+loadWithMap(stageNum);

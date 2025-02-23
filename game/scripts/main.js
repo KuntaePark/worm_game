@@ -1,3 +1,7 @@
+const gameEndOverlay = document.getElementById("game-end-overlay");
+const gameEndTitle = document.getElementById("game-end-title");
+const gameEndNextBtn = document.getElementById("game-end-next-btn");
+
 let gameIntervalId = null;
 
 let vector = new Coord(1, 0);
@@ -25,16 +29,23 @@ function startGame() {
 
     if (obstCollide() || wallCollide()) {
       //장애물 충돌 시
+      gameEndTitle.innerText = "GAME OVER"
       const head = document.querySelector(".snakeHead");
       head.style.backgroundColor = "red";
       console.log("ded");
+      gameEndOverlay.style.visibility = "visible";
       clearInterval(gameIntervalId);
     }
     if (foodCollide()) {
       //먹이 충돌 시
-
       if (foods.length === 0) {
         console.log("eaten all");
+        gameEndTitle.innerText = "STAGE CLEAR!";
+        if(stageNum < 10) {
+          gameEndNextBtn.innerText = "다음 스테이지";
+          gameEndNextBtn.href = `../game/index.html?${stageNum+1}`;
+        }
+        gameEndOverlay.style.visibility = "visible";
         clearInterval(gameIntervalId);
       }
       console.log("food");

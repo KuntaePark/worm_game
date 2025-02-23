@@ -17,7 +17,7 @@ const startPoint = new Coord(100, 400);
 
 //지렁이 속도 관련
 let spaceBetween = 15;
-let time = 30;
+let time = 15;
 
 //각 장애물 위치
 let obstacles = [
