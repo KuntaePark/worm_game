@@ -32,6 +32,10 @@
   border-radius: 4px;
 }
 
+#wrap > a:hover {
+  transform: scale(1.04);
+}
+
 #stage-select {
   display: grid;
   gap: 15px;
